@@ -1,7 +1,9 @@
-import User from '@modules/users/infra/typeorm/entities/User';
-import { injectable, inject } from 'tsyringe';
+import { inject, injectable } from 'tsyringe';
+
 import IUsersRepository from '@modules/users/repositories/IUsersRepository';
 import ICacheProvider from '@shared/container/providers/CacheProvider/models/ICacheProvider';
+
+import User from '@modules/users/infra/typeorm/entities/User';
 
 interface IRequest {
   user_id: string;

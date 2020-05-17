@@ -1,11 +1,12 @@
-node_modules/
-buid/
 .idea/
 .vscode/
+node_modules/
+yarn.lock
+build/
+temp/
 
-temp/*
-!temp/.gitkeep
+tmp/*
+!tmp/.gitkeep
+
 coverage/
-.DS_Store
 .env
-ormconfig.json

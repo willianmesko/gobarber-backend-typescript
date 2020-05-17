@@ -1,15 +1,16 @@
-import FakeCacheProvider from '@shared/container/providers/CacheProvider/implementations/fakes/FakeCacheProvider';
-import FakeAppointmentsRepository from '../repositories/fakes/FakeAppointmentsRepository';
+import FakeAppointmentsRepository from '@modules/appointments/repositories/fakes/FakeAppointmentsRepository';
+import FakeCacheProvider from '@shared/container/providers/CacheProvider/fakes/FakeCacheProvider';
 import ListProviderAppointmentsService from './ListProviderAppointmentsService';
 
 let fakeAppointmentsRepository: FakeAppointmentsRepository;
-let listProviderAppointments: ListProviderAppointmentsService;
 let fakeCacheProvider: FakeCacheProvider;
+let listProviderAppointments: ListProviderAppointmentsService;
 
-describe('ListProviderAppointmentsService', () => {
+describe('ListProviderAppointments', () => {
   beforeEach(() => {
     fakeAppointmentsRepository = new FakeAppointmentsRepository();
     fakeCacheProvider = new FakeCacheProvider();
+
     listProviderAppointments = new ListProviderAppointmentsService(
       fakeAppointmentsRepository,
       fakeCacheProvider,
@@ -31,11 +32,11 @@ describe('ListProviderAppointmentsService', () => {
 
     const appointments = await listProviderAppointments.execute({
       provider_id: 'provider',
-      day: 20,
-      month: 5,
       year: 2020,
+      month: 5,
+      day: 20,
     });
 
-    await expect(appointments).toEqual([appointment1, appointment2]);
+    expect(appointments).toEqual([appointment1, appointment2]);
   });
 });
